@@ -51,7 +51,8 @@ export const Bookmarks = () => {
 const styles = StyleSheet.create({
 
     container: {
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
+        backgroundColor: '#F8F8FA'
     },
 
     titleSection: {
