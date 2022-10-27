@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
 
     title: {
         fontFamily: 'Roboto-Slab',
-        fontSize: 24,
+        fontSize: 20,
         color: '#2F3640',
     },
 
     subTitle: {
         fontFamily: 'Inter-Tight',
-        fontSize: 16,
+        fontSize: 14,
         color: 'rgba(47, 54, 64, 0.5)',
         marginTop: 5,
     },
@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
     text: {
         marginTop: 20,
         fontFamily: 'Inter-Tight',
-        fontSize: 16,
+        fontSize: 14,
         color: '#2F3640',
     },
 
     link: {
         marginTop: 20,
         fontFamily: 'Inter-Tight-Bold',
-        fontSize: 16,
+        fontSize: 14,
         color: '#006AE6',
     },
 })

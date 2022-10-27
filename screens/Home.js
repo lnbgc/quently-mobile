@@ -1,21 +1,33 @@
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
+import { useCallback } from "react"
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
-export const Home = () => {
 
+export const Home = ({ navigation }) => {
+
+    const handleSidebarToggle = useCallback(() => {
+        navigation.toggleDrawer()
+    }, [navigation])
 
     return (
         <View style={styles.container}>
+
+            <View style={{ marginTop: 50, flexDirection: 'row', alignItems: 'center', justifyContent:'space-between', width:'100%' }}>
+                <Text style={{fontFamily: 'Poppins', fontSize: 20, color:'#006AE6'}}>Quently.</Text>
+                <TouchableOpacity rippleBorderless onPress={handleSidebarToggle}>
+                    <Icon name="menu" size={40} color="#006AE6" />
+                </TouchableOpacity>
+            </View>
 
             {/* <Text style={styles.text}>Looking for something?</Text> */}
 
             <View style={styles.searchbar}>
                 <TextInput style={styles.input} placeholder="Search..." selectionColor={'#5E9EFF'} />
-                <Pressable style={styles.button}>
+                <TouchableOpacity rippleBorderless style={styles.button}>
                     <Icon name="ios-search" size={25} color="#F8F8FA" />
-                </Pressable>
+                </TouchableOpacity>
             </View>
 
-            <ScrollView style={{ width: '100%', marginTop:20 }}>
+            <ScrollView style={{ width: '100%', marginTop: 20 }}>
                 <View style={styles.topWord}>
                     <View style={styles.wordTitle}>
                         <Icon name="volume-high" size={30} color="#006AE6" style={{ marginRight: 10 }} />
@@ -70,16 +82,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: '100%'
     },
-    title: {
-        fontSize: 20,
-    },
-    text: {
-        fontFamily: 'Inter-Tight',
-        fontWeight: '600',
-        fontSize: 18,
-        marginTop: 10,
-        marginBottom: 20,
-    },
     searchbar: {
         // display: 'flex',
         flexDirection: 'row',
@@ -99,8 +101,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 10,
         backgroundColor: "#006AE6",
-        color: 'white',
-        fontSize: 18,
     },
     topWord: {
         alignSelf: 'flex-start',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     phonetic: {
         fontFamily: 'Inter-Tight',
         color: 'rgba(47, 54, 64, 0.5)',
-        fontSize: 18
+        fontSize: 16
     },
     content: {
         borderTopWidth: 2,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     tab: {
         fontFamily: 'Inter-Tight-Bold',
-        fontSize: 18,
+        fontSize: 16,
         color: '#F8F8FA',
         backgroundColor: '#006AE6',
         alignSelf: 'flex-start',
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     tabListItem: {
         fontFamily: 'Inter-Tight',
         color: '#2F3640',
-        fontSize: 16,
+        fontSize: 14,
         marginTop: 10,
     },
     tabListItem2: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
         borderLeftWidth: 2,
         borderColor: '#006AE6',
         paddingLeft: 10,
-        fontSize: 16,
+        fontSize: 14,
         marginTop: 10,
         marginLeft: 15,
     },
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     tabItem: {
         fontFamily: 'Roboto-Slab',
         color: '#006AE6',
-        fontSize: 16,
+        fontSize: 14,
         marginTop: 10,
         marginRight: 15,
         borderWidth: 2,

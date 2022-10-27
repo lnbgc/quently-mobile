@@ -64,13 +64,13 @@ const styles = StyleSheet.create({
 
     title: {
         fontFamily: 'Roboto-Slab',
-        fontSize: 24,
+        fontSize: 20,
         color: '#2F3640',
     },
 
     subTitle: {
         fontFamily: 'Inter-Tight',
-        fontSize: 16,
+        fontSize: 14,
         color: 'rgba(47, 54, 64, 0.5)',
         marginTop: 5,
     },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 
     emptyTitle: {
         fontFamily: 'Inter-Tight-Bold',
-        fontSize: 18,
+        fontSize: 16,
         color: '#F8F8FA',
         backgroundColor: '#006AE6',
         paddingVertical: 10,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
 
     emptyMessage: {
         fontFamily: 'Inter-Tight',
-        fontSize: 16,
+        fontSize: 14,
         color: 'rgba(47, 54, 64, 0.5)',
         paddingTop: 20,
         textAlign: 'center',
