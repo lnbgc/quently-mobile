@@ -5,6 +5,8 @@ import { useFonts } from 'expo-font';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
+import { Text } from "react-native";
+
 import { Home } from './screens/Home';
 import { About } from './screens/About';
 import { Contact } from './screens/Contact';
@@ -12,8 +14,6 @@ import { Bookmarks } from './screens/Bookmarks';
 
 import Menu from "./components/Menu";
 import CustomDrawer from './components/CustomDrawer';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { Text, TouchableOpacity, View } from "react-native";
 
 const Drawer = createDrawerNavigator();
 
@@ -39,6 +39,11 @@ export default function App() {
           swipeEdgeWidth: 200,
           headerShown: true,
 
+          drawerStyle: {
+            backgroundColor: '#F8F8FA',
+            width: '100%',
+          },
+
           drawerLabelStyle: {
             fontFamily: 'Inter-Tight-Bold',
             fontSize: 18,
@@ -47,19 +52,10 @@ export default function App() {
             padding: 0,
           },
 
-          drawerStyle: {
-            backgroundColor: '#F8F8FA',
-            width: '100%',
-          },
-
           headerStyle: {
             height: 100,
             backgroundColor: '#F8F8FA',
             elevation: 0,
-          },
-
-          headerTitleStyle: {
-            paddingHorizontal: 30,
           },
 
           drawerActiveBackgroundColor: '#006AE6',
