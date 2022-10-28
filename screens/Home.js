@@ -2,23 +2,14 @@ import { useCallback } from "react"
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
 
-export const Home = ({ navigation }) => {
+export const Home = () => {
 
-    const handleSidebarToggle = useCallback(() => {
-        navigation.toggleDrawer()
-    }, [navigation])
+
 
     return (
         <View style={styles.container}>
 
-            <View style={{ marginTop: 50, flexDirection: 'row', alignItems: 'center', justifyContent:'space-between', width:'100%' }}>
-                <Text style={{fontFamily: 'Poppins', fontSize: 20, color:'#006AE6'}}>Quently.</Text>
-                <TouchableOpacity rippleBorderless onPress={handleSidebarToggle}>
-                    <Icon name="menu" size={40} color="#006AE6" />
-                </TouchableOpacity>
-            </View>
-
-            {/* <Text style={styles.text}>Looking for something?</Text> */}
+            {/* <Text style={styles.welcomeText}>Looking for something?</Text> */}
 
             <View style={styles.searchbar}>
                 <TextInput style={styles.input} placeholder="Search..." selectionColor={'#5E9EFF'} />
@@ -78,9 +69,15 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#F8F8FA',
         paddingHorizontal: 30,
-        paddingTop: 10,
+        // paddingTop: 10,
         alignItems: 'center',
         height: '100%'
+    },
+    welcomeText: {
+        marginBottom: 20,
+        fontFamily: 'Inter-Tight',
+        fontSize: 16,
+        color: '#2F3640',
     },
     searchbar: {
         // display: 'flex',
@@ -90,6 +87,7 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: "#E6E7EB",
         borderRadius: 100,
+        // marginTop: 10,
     },
     input: {
         width: '70%',

@@ -9,8 +9,11 @@ import { Home } from './screens/Home';
 import { About } from './screens/About';
 import { Contact } from './screens/Contact';
 import { Bookmarks } from './screens/Bookmarks';
-// import Header from './components/Header';
-// import { View } from 'react-native';
+
+import Menu from "./components/Menu";
+import CustomDrawer from './components/CustomDrawer';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { Text, TouchableOpacity, View } from "react-native";
 
 const Drawer = createDrawerNavigator();
 
@@ -31,14 +34,59 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home"
         screenOptions={{
-          drawerType: 'front',
+          drawerType: 'slide',
           drawerPosition: 'right',
-          swipeEdgeWidth: 200
-        }}>
-        <Drawer.Screen name="Home" component={Home} options={{headerShown:false}} />
-        <Drawer.Screen name="About" component={About} options={{headerShown:false}} />
-        <Drawer.Screen name="Contact" component={Contact} options={{headerShown:false}} />
-        <Drawer.Screen name="Bookmarks" component={Bookmarks} options={{headerShown:false}} />
+          swipeEdgeWidth: 200,
+          headerShown: true,
+
+          drawerLabelStyle: {
+            fontFamily: 'Inter-Tight-Bold',
+            fontSize: 18,
+            textAlign: 'center',
+            marginHorizontal: 0,
+            padding: 0,
+          },
+
+          drawerStyle: {
+            backgroundColor: '#F8F8FA',
+            width: '100%',
+          },
+
+          headerStyle: {
+            height: 100,
+            backgroundColor: '#F8F8FA',
+            elevation: 0,
+          },
+
+          headerTitleStyle: {
+            paddingHorizontal: 30,
+          },
+
+          drawerActiveBackgroundColor: '#006AE6',
+          drawerActiveTintColor: '#F8F8FA',
+          drawerInactiveTintColor: '#2F3640',
+          drawerInactiveBackgroundColor: '#E6E7EB',
+          overlayColor: 'transparent',
+
+          headerLeft: () => (
+            <Text style={{
+              fontFamily: 'Poppins',
+              fontSize: 24,
+              color: '#006AE6',
+              paddingLeft: 30,
+            }}>Q.</Text>
+          ),
+
+          headerRight: () => (
+            <Menu/>
+          ),
+
+        }}
+        drawerContent={props => <CustomDrawer {...props} />}>
+        <Drawer.Screen name="Home" component={Home} options={{ headerTitle: '' }} />
+        <Drawer.Screen name="About" component={About} options={{ headerTitle: '' }} />
+        <Drawer.Screen name="Contact" component={Contact} options={{ headerTitle: '' }} />
+        <Drawer.Screen name="Bookmarks" component={Bookmarks} options={{ headerTitle: '' }} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
