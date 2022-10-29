@@ -1,19 +1,18 @@
-import { useCallback } from "react"
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
+import { useTheme } from "../contexts/ThemeProvider"
 
 export const Home = () => {
-
-
+    const { theme } = useTheme();
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
 
-            {/* <Text style={styles.welcomeText}>Looking for something?</Text> */}
+            <Text style={[styles.welcomeText, { color: theme.textColor }]}>Looking for something?</Text>
 
-            <View style={styles.searchbar}>
+            <View style={[styles.searchbar, { backgroundColor: theme.secondaryColor }]}>
                 <TextInput style={styles.input} placeholder="Search..." selectionColor={'#5E9EFF'} />
-                <TouchableOpacity rippleBorderless style={styles.button}>
+                <TouchableOpacity rippleBorderless style={[styles.button, { backgroundColor: theme.accentColor }]}>
                     <Icon name="ios-search" size={25} color="#F8F8FA" />
                 </TouchableOpacity>
             </View>
@@ -21,40 +20,40 @@ export const Home = () => {
             <ScrollView style={{ width: '100%', marginTop: 20 }}>
                 <View style={styles.topWord}>
                     <View style={styles.wordTitle}>
-                        <Icon name="volume-high" size={30} color="#006AE6" style={{ marginRight: 10 }} />
-                        <Text style={styles.word}>word</Text>
-                        <Icon name="bookmark-outline" size={30} color="#006AE6" style={{ marginLeft: 10 }} />
+                        <Icon name="volume-high" size={30} color={theme.accentColor} style={{ marginRight: 10 }} />
+                        <Text style={[styles.word, { color: theme.textColor }]}>word</Text>
+                        <Icon name="bookmark-outline" size={30} color={theme.accentColor} style={{ marginLeft: 10 }} />
                     </View>
-                    <Text style={styles.phonetic}>/word/</Text>
+                    <Text style={[styles.phonetic, { color: theme.transparentColor }]}>/word/</Text>
                 </View>
 
-                <View style={styles.content}>
+                <View style={[styles.content, { borderColor: theme.secondaryColor }]}>
 
                     <View style={styles.section}>
-                        <Text style={styles.tab}>tab</Text>
+                        <Text style={[styles.tab, { backgroundColor: theme.accentColor }]}>tab</Text>
                         <View>
                             <View>
-                                <Text style={styles.tabListItem}>1. tab content</Text>
-                                <Text style={styles.tabListItem2}>tab content</Text>
+                                <Text style={[styles.tabListItem, { color: theme.textColor }]}>1. tab content</Text>
+                                <Text style={[styles.tabListItem2, { color: theme.accentColor }, { borderColor: theme.accentColor }]}>tab content</Text>
                             </View>
                         </View>
                     </View>
 
                 </View>
 
-                <View style={styles.content}>
+                <View style={[styles.content, { borderColor: theme.secondaryColor }]}>
 
-                    <View style={styles.section2}>
-                        <Text style={styles.tab}>Synonyms</Text>
+                    <View style={[styles.section2, { borderColor: theme.secondaryColor }]}>
+                        <Text style={[styles.tab, { backgroundColor: theme.accentColor }]}>Synonyms</Text>
                         <View style={styles.tabContent}>
-                            <Text style={styles.tabItem}>word</Text>
+                            <Text style={[styles.tabItem, { borderColor: theme.accentColor }, { color: theme.accentColor }]}>word</Text>
                         </View>
                     </View>
 
-                    <View style={styles.section2}>
-                        <Text style={styles.tab}>Antonyms</Text>
+                    <View style={[styles.section2, { borderColor: theme.secondaryColor }]}>
+                        <Text style={[styles.tab, { backgroundColor: theme.accentColor }]}>Antonyms</Text>
                         <View style={styles.tabContent}>
-                            <Text style={styles.tabItem}>word</Text>
+                            <Text style={[styles.tabItem, { borderColor: theme.accentColor }, { color: theme.accentColor }]}>word</Text>
                         </View>
                     </View>
 
@@ -67,9 +66,7 @@ export const Home = () => {
 const styles = StyleSheet.create({
 
     container: {
-        backgroundColor: '#F8F8FA',
         paddingHorizontal: 30,
-        // paddingTop: 10,
         alignItems: 'center',
         height: '100%'
     },
@@ -77,17 +74,13 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontFamily: 'Inter-Tight',
         fontSize: 16,
-        color: '#2F3640',
     },
     searchbar: {
-        // display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        backgroundColor: "#E6E7EB",
         borderRadius: 100,
-        // marginTop: 10,
     },
     input: {
         width: '70%',
@@ -98,7 +91,6 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         paddingHorizontal: 20,
         paddingVertical: 10,
-        backgroundColor: "#006AE6",
     },
     topWord: {
         alignSelf: 'flex-start',
@@ -110,19 +102,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     word: {
-        color: '#2F3640',
         fontFamily: 'Roboto-Slab',
         fontSize: 20
     },
     phonetic: {
         fontFamily: 'Inter-Tight',
-        color: 'rgba(47, 54, 64, 0.5)',
         fontSize: 16
     },
     content: {
         borderTopWidth: 2,
         borderStyle: 'dashed',
-        borderColor: '#E6E7EB',
         paddingBottom: 20,
     },
     section: {
@@ -132,7 +121,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter-Tight-Bold',
         fontSize: 16,
         color: '#F8F8FA',
-        backgroundColor: '#006AE6',
         alignSelf: 'flex-start',
         paddingHorizontal: 30,
         paddingVertical: 5,
@@ -140,15 +128,12 @@ const styles = StyleSheet.create({
     },
     tabListItem: {
         fontFamily: 'Inter-Tight',
-        color: '#2F3640',
         fontSize: 14,
         marginTop: 10,
     },
     tabListItem2: {
         fontFamily: 'Inter-Tight',
-        color: '#006AE6',
         borderLeftWidth: 2,
-        borderColor: '#006AE6',
         paddingLeft: 10,
         fontSize: 14,
         marginTop: 10,
@@ -161,12 +146,10 @@ const styles = StyleSheet.create({
     },
     tabItem: {
         fontFamily: 'Roboto-Slab',
-        color: '#006AE6',
         fontSize: 14,
         marginTop: 10,
         marginRight: 15,
         borderWidth: 2,
-        borderColor: '#006AE6',
         borderRadius: 40,
         paddingHorizontal: 20,
         paddingVertical: 5,
@@ -175,7 +158,6 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         borderBottomWidth: 2,
         borderStyle: 'dashed',
-        borderColor: '#E6E7EB',
         paddingBottom: 20,
     },
 })

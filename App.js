@@ -7,13 +7,16 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Text } from "react-native";
 
-import { Home } from './screens/Home';
-import { About } from './screens/About';
-import { Contact } from './screens/Contact';
-import { Bookmarks } from './screens/Bookmarks';
+import { Home } from './src/screens/Home';
+import { About } from './src/screens/About';
+import { Contact } from './src/screens/Contact';
+import { Bookmarks } from './src/screens/Bookmarks';
 
-import Menu from "./components/Menu";
-import CustomDrawer from './components/CustomDrawer';
+import Menu from "./src/components/Menu";
+import CustomDrawer from './src/components/CustomDrawer';
+
+import ThemeProvider from './src/contexts/ThemeProvider';
+import ThemeWrapper from './src/components/ThemeWrapper';
 
 const Drawer = createDrawerNavigator();
 
@@ -30,60 +33,63 @@ export default function App() {
     return null;
   }
 
+
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home"
-        screenOptions={{
-          drawerType: 'slide',
-          drawerPosition: 'right',
-          swipeEdgeWidth: 200,
-          headerShown: true,
+    <ThemeProvider>
+      <ThemeWrapper>
 
-          drawerStyle: {
-            backgroundColor: '#F8F8FA',
-            width: '100%',
-          },
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Home"
+            screenOptions={{
+              drawerType: 'slide',
+              drawerPosition: 'right',
+              swipeEdgeWidth: 200,
+              headerShown: true,
 
-          drawerLabelStyle: {
-            fontFamily: 'Inter-Tight-Bold',
-            fontSize: 18,
-            textAlign: 'center',
-            marginHorizontal: 0,
-            padding: 0,
-          },
+              drawerStyle: {
+                backgroundColor: '#F8F8FA',
+                width: '100%',
+              },
 
-          headerStyle: {
-            height: 100,
-            backgroundColor: '#F8F8FA',
-            elevation: 0,
-          },
+              drawerLabelStyle: {
+                fontFamily: 'Inter-Tight-Bold',
+                fontSize: 18,
+                textAlign: 'center',
+                marginHorizontal: 0,
+                padding: 0,
+              },
 
-          drawerActiveBackgroundColor: '#006AE6',
-          drawerActiveTintColor: '#F8F8FA',
-          drawerInactiveTintColor: '#2F3640',
-          drawerInactiveBackgroundColor: '#E6E7EB',
-          overlayColor: 'transparent',
+              headerStyle: {
+                height: 100,
+                backgroundColor: '#F8F8FA',
+                elevation: 0,
+              },
 
-          headerLeft: () => (
-            <Text style={{
-              fontFamily: 'Poppins',
-              fontSize: 24,
-              color: '#006AE6',
-              paddingLeft: 30,
-            }}>Q.</Text>
-          ),
+              overlayColor: 'transparent',
 
-          headerRight: () => (
-            <Menu/>
-          ),
+              headerLeft: () => (
+                <Text style={{
+                  fontFamily: 'Poppins',
+                  fontSize: 24,
+                  color: '#006AE6',
+                  paddingLeft: 30,
+                }}>Q.</Text>
+              ),
 
-        }}
-        drawerContent={props => <CustomDrawer {...props} />}>
-        <Drawer.Screen name="Home" component={Home} options={{ headerTitle: '' }} />
-        <Drawer.Screen name="About" component={About} options={{ headerTitle: '' }} />
-        <Drawer.Screen name="Contact" component={Contact} options={{ headerTitle: '' }} />
-        <Drawer.Screen name="Bookmarks" component={Bookmarks} options={{ headerTitle: '' }} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+              headerRight: () => (
+                <Menu />
+              ),
+
+            }}
+            drawerContent={props => <CustomDrawer {...props} />}>
+            <Drawer.Screen name="Home" component={Home} options={{ headerTitle: '' }} />
+            <Drawer.Screen name="About" component={About} options={{ headerTitle: '' }} />
+            <Drawer.Screen name="Contact" component={Contact} options={{ headerTitle: '' }} />
+            <Drawer.Screen name="Bookmarks" component={Bookmarks} options={{ headerTitle: '' }} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+
+      </ThemeWrapper>
+    </ThemeProvider>
   );
 }
