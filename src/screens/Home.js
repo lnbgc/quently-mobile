@@ -8,10 +8,10 @@ export const Home = () => {
     return (
         <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
 
-            <Text style={[styles.welcomeText, { color: theme.textColor }]}>Looking for something?</Text>
+            {/* <Text style={[styles.welcomeText, { color: theme.textColor }]}>Looking for something?</Text> */}
 
             <View style={[styles.searchbar, { backgroundColor: theme.secondaryColor }]}>
-                <TextInput style={styles.input} placeholder="Search..." selectionColor={'#5E9EFF'} />
+                <TextInput style={styles.input} placeholder="Search..." placeholderTextColor={theme.transparentColor} selectionColor={'#5E9EFF'} />
                 <TouchableOpacity rippleBorderless style={[styles.button, { backgroundColor: theme.accentColor }]}>
                     <Icon name="ios-search" size={25} color="#F8F8FA" />
                 </TouchableOpacity>

@@ -1,4 +1,4 @@
-import { useTheme } from "../contexts/ThemeProvider";
+import { useTheme } from "./ThemeProvider";
 
 const ThemeWrapper = ({children}) => {
     const {isLoadingTheme} = useTheme();

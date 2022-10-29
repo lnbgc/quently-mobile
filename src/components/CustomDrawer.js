@@ -15,34 +15,34 @@ const CustomDrawer = (props) => {
 
             <DrawerContentScrollView {...props} contentContainerStyle={{ backgroundColor: theme.backgroundColor, height: '100%', justifyContent: 'space-between', alignItems: 'center', paddingBottom: 40 }}>
 
-                <View style={{ alignSelf: 'flex-end', alignItems: 'center', flexDirection: 'row', marginRight: 30, height: 65 }}>
+                <View style={{ alignSelf: 'flex-end', alignItems: 'center', flexDirection: 'row', marginRight: 30, marginTop:10 }}>
                     <TouchableOpacity rippleBorderless onPress={() => { props.navigation.toggleDrawer() }}>
-                        <Icon name="close" size={40} color={theme.textColor} />
+                        <Icon name="close" size={35} color={theme.textColor} />
                     </TouchableOpacity>
                 </View>
 
                 <View>
 
                     <TouchableOpacity rippleBorderless onPress={() => { props.navigation.navigate('Home') }}>
-                        <Text style={[styles.navItem, { backgroundColor: theme.secondaryColor }, { color: theme.textColor }]}>Home</Text>
+                        <Text style={[styles.navItem, { backgroundColor: theme.accentColor }]}>Home</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity rippleBorderless onPress={() => { props.navigation.navigate('About') }}>
-                        <Text style={[styles.navItem, { backgroundColor: theme.secondaryColor }, { color: theme.textColor }]}>About</Text>
+                        <Text style={[styles.navItem, { backgroundColor: theme.accentColor }]}>About</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity rippleBorderless onPress={() => { props.navigation.navigate('Contact') }}>
-                        <Text style={[styles.navItem, { backgroundColor: theme.secondaryColor }, { color: theme.textColor }]}>Contact</Text>
+                        <Text style={[styles.navItem, { backgroundColor: theme.accentColor }]}>Contact</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity rippleBorderless onPress={() => { props.navigation.navigate('Bookmarks') }} style={[styles.bookmarkLink, {backgroundColor: theme.secondaryColor}]}>
-                        <Text style={[styles.bookmarkItem, {color: theme.textColor}]} >Bookmarks</Text>
-                        <Icon name="bookmarks" size={25} color={theme.textColor} />
+                    <TouchableOpacity rippleBorderless onPress={() => { props.navigation.navigate('Bookmarks') }} style={[styles.bookmarkLink, {backgroundColor: theme.accentColor}]}>
+                        <Text style={styles.bookmarkItem} >Bookmarks</Text>
+                        <Icon name="bookmarks" size={25} color="#F8F8FA" />
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity rippleBorderless onPress={changeTheme} style={[styles.themeButton, { backgroundColor: theme.secondaryColor }]}>
-                    <MaterialIcons name="invert-colors-on" size={35} color={theme.textColor} />
+                <TouchableOpacity rippleBorderless onPress={changeTheme} style={[styles.themeButton, { borderColor: theme.accentColor }]}>
+                    <MaterialIcons name="invert-colors-on" size={30} color={theme.accentColor} />
                 </TouchableOpacity>
 
             </DrawerContentScrollView>
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 40,
         borderRadius: 50,
+        color: '#F8F8FA'
     },
     bookmarkLink: {
         flexDirection: 'row',
@@ -73,9 +74,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter-Tight-Bold',
         fontSize: 16,
         paddingRight: 10,
+        color: '#F8F8FA',
     },
     themeButton: {
         padding: 10,
         borderRadius: 50,
+        borderWidth: 2,
+        borderStyle: 'dashed'
     }
 })
